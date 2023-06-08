@@ -6,7 +6,7 @@ resource "aws_lb" "main" {
   subnets            = var.subnets
 
   tags = {
-    name               = "${var.env}${var.name}-"
+    name               = "${var.env}${var.name}"
   }
 }
 
