@@ -1,18 +1,18 @@
-resource "aws_lb" "internal" {
-  name               = "${var.env}${var.name}-internal"
-  internal           = true
+resource "aws_lb" "main" {
+  name               = "${var.env}${var.name}"
+  internal           = var.internal
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.internal_sg.id]
-  subnets            = var.private_subnets
+  security_groups    = [aws_security_group.main.id]
+  subnets            = var.subnets
 
   tags = {
-    name               = "${var.env}${var.name}-internal"
+    name               = "${var.env}${var.name}-"
   }
 }
 
-resource "aws_security_group" "internal_sg" {
-  name        = "${var.env}-${var.name}-internal-alb.sg"
-  description = "${var.env}-${var.name}-internal-alb.sg"
+resource "aws_security_group" "main" {
+  name        = "${var.env}-${var.name}-alb.sg"
+  description = "${var.env}-${var.name}-alb.sg"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -34,6 +34,6 @@ resource "aws_security_group" "internal_sg" {
   }
 
   tags = {
-    Name = "${var.env}-${var.name}-internal-alb.sg"
+    Name = "${var.env}-${var.name}-alb.sg"
   }
 }
