@@ -52,5 +52,3 @@ resource "aws_lb_listener" "main" {
     }
   }
 }
-Authenticate-cognito Action
-resource "aws_
