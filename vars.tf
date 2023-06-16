@@ -4,3 +4,4 @@ variable "vpc_id" {}
 variable "vpc_cidr" {}
 variable "internal" {}
 variable "subnets" {}
+variable "ACM_ARN" {}
